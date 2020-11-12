@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { fectProductsRequest, deleteProductRequest } from '../../store/actions/productActions'
 import { Link, Redirect } from 'react-router-dom'
 
-class Dashboard extends Component {
-
+class ManageProduct extends Component {
     componentDidMount() {
         this.props.fetchAllProducts();
     }
@@ -13,7 +12,6 @@ class Dashboard extends Component {
             this.props.deleteProduct(id);
         }
     }
-
     render() {
         const { user } = this.props;
         if (!user.token) return <Redirect to="/signin" />
@@ -27,7 +25,7 @@ class Dashboard extends Component {
                                 <Link to={'product/' + product.productId + '/' + 'edit'} className="col s6 m6 l6 orange-text">
                                     <i className="material-icons icon-cus">mode_edit</i>
                                 </Link>
-                                <Link to="" className="col s6 m6 l6 red-text"
+                                <Link to="product" className="col s6 m6 l6 red-text"
                                     onClick={() => this.onDelete(product.productId)}>
                                     <i className="material-icons icon-cus">clear</i>
                                 </Link>
@@ -62,25 +60,9 @@ class Dashboard extends Component {
                 </tr>
             )
         return (
-            <div className="welcome container">
-                <h2>Welcome, {user.fullName}!</h2>
-                <h6>Which table do you want to see? Please pick one.</h6>
-                <div className="row">
-                    <Link to="/product">
-                        <div className="col s6 welcomechoose">
-                            <p>PRODUCT</p>
-                        </div>
-                    </Link>
-                    <Link to="/category">
-                        <div className="col s6 welcomechoose">
-                            <p>CATEGORY</p>
-                        </div>
-                    </Link>
-                    <img className="col s12" src="http://file.hstatic.net/1000075078/article/kv_new_sori_web__8ba795388fb2451d8891cb649a33fa16_1024x1024.jpg" alt="" />
-                </div>
-
+            <div className="container">
                 <br></br>
-                {/* <table className="highlight responsive-table">
+                <table className="highlight responsive-table">
                     <thead className="orange darken-1">
                         <tr>
                             <th colSpan="4">
@@ -123,7 +105,7 @@ class Dashboard extends Component {
                         </tr>
                         {productList}
                     </tbody>
-                </table> */}
+                </table>
             </div>
         )
     }
@@ -148,5 +130,4 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
+export default connect(mapStateToProps, mapDispatchToProps)(ManageProduct)

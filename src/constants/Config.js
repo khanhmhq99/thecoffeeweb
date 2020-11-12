@@ -1,1 +1,1 @@
-export const API_URL = 'https://localhost:44362/api/v1';
+export const API_URL = 'https://coffee-shop-api.azurewebsites.net/api/v1';

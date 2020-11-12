@@ -13,9 +13,11 @@ const productsReducer = (state = initState, action) => {
                 error: null
             }
         case 'ADD_PRODUCT':
+            // let newAddProducts = state.products.push(action.product)
+            // state.products.push(action.product)
             return {
                 ...state,
-                products: [state.products, action.product],
+                products: [...state.products, action.product],
                 addStatus: 'added',
                 error: null
             }
@@ -28,15 +30,17 @@ const productsReducer = (state = initState, action) => {
                 products: newProducts
             }
         case 'UPDATE_PRODUCT':
-            const index = state.products.findIndex(product => product.productId !== action.product.productId);
+            const index = state.products.findIndex(product => product.productId === action.product.productId);
+            console.log(index)
 
-            const newList = [...state.products]
+            const newList = state.products
 
             newList[index] = action.product
 
             return {
                 ...state,
-                products: newList
+                products: newList,
+                addStatus: 'updated'
             }
         default:
             return state

@@ -41,8 +41,6 @@ class SignIn extends Component {
             <div className="container">
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">Login</h5>
-                    <div className="row">
-                        <div className="col s6 m8 l9">
                             <div className="input-field">
                                 <label htmlFor="username" >Username</label>
                                 <input type="text" id="username" onChange={this.handleChange} />
@@ -51,25 +49,21 @@ class SignIn extends Component {
                                 <label htmlFor="password" >Password</label>
                                 <input type="password" id="password" onChange={this.handleChange} />
                             </div>
-                        </div>
-                        <div className="col s6 m4 l3">
                             <div className="input-field">
                                 <div className="row">
-                                    <button className="btn orange darken-1 z-depth-0 col s12">Login</button>
-                                    <GoogleLogin className="col s12"
+                                    <button className="btn orange darken-1 z-depth-0">Login</button>
+                                    {/* <GoogleLogin className="col s12"
                                         clientId="337728295576-pk72lofei65smnvup7bqojru23qq142h.apps.googleusercontent.com"
                                         buttonText="Login with Google"
                                         onSuccess={this.responseGoogle}
                                         onFailure={this.responseGoogle}
-                                    />
+                                    /> */}
                                 </div>
 
                                 <div className="red-text center">
                                     {authError ? <p> {authError}</p> : null}
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
 
                 </form>
